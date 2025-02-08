@@ -1,0 +1,14 @@
+{
+    "name": "@maks0u/cli-serve",
+    "version": "0.1.0",
+    "license": "MIT",
+    "exports": "./main.ts",
+    "tasks": {
+        "dev": "deno run --watch --allow-net --allow-read ./main.ts",
+        "build": "deno compile --allow-net --allow-read --output=serve ./main.ts"
+    },
+    "imports": {
+        "@std/cli": "jsr:@std/cli@^1.0.12",
+        "@std/http": "jsr:@std/http@^1.0.13"
+    }
+}
