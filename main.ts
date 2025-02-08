@@ -8,10 +8,10 @@ const args = parseArgs(Deno.args, {
     },
     default: {
         help: false,
-        host: 'localhost',
+        hostname: 'localhost',
         port: '8080',
     },
-    string: ['host', 'port'],
+    string: ['hostname', 'port'],
 });
 
 if (args.help) {
@@ -20,12 +20,12 @@ Usage: deno ./main.ts [options] [path]
     Options:
         -h, --help      Show this help message and exit
         -p, --port      Port to listen on (default: 8080)
-        --host          Hostname to listen on (default: localhost)
+        --hostname      Hostname to listen on (default: localhost)
     `);
     Deno.exit();
 }
 
-const { host: hostname, port } = args;
+const { hostname, port } = args;
 const rootPath = args._[0] ?? './static';
 
 const onListen = () => {
