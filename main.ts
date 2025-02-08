@@ -1,27 +1,36 @@
 import { parseArgs } from '@std/cli/parse-args';
 import { STATUS_CODE, STATUS_TEXT } from '@std/http/status';
+import { default as config } from './deno.json' with { type: 'json' };
+const { name, version } = config;
 
 const args = parseArgs(Deno.args, {
     alias: {
         h: 'help',
         p: 'port',
+        v: 'version',
     },
+    boolean: ['help', 'version'],
     default: {
         help: false,
         hostname: 'localhost',
         port: '8080',
+        version: false,
     },
     string: ['hostname', 'port'],
 });
 
+if (args.version) {
+    console.log(`${name} ${version}
+using deno ${Deno.version.deno}`);
+    Deno.exit();
+}
+
 if (args.help) {
-    console.log(`
-Usage: deno ./main.ts [options] [path]
+    console.log(`Usage: deno ./main.ts [options] [path]
     Options:
         -h, --help      Show this help message and exit
         -p, --port      Port to listen on (default: 8080)
-        --hostname      Hostname to listen on (default: localhost)
-    `);
+        --hostname      Hostname to listen on (default: localhost)`);
     Deno.exit();
 }
 
