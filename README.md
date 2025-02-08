@@ -1,3 +1,5 @@
+# cli-serve
+
 A simple HTTP server built with Deno to easily serve local static files.
 
 ## Usage

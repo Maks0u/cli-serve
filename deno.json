@@ -1,9 +1,10 @@
 {
     "name": "@maks0u/cli-serve",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "license": "MIT",
     "exports": "./main.ts",
     "tasks": {
+        "start": "deno run --allow-net --allow-read ./main.ts",
         "dev": "deno run --watch --allow-net --allow-read ./main.ts",
         "build": "deno compile --allow-net --allow-read --output=serve ./main.ts"
     },
